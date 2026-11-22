@@ -1,0 +1,78 @@
+---
+import { technicalData } from '../data/content';
+---
+
+<section id={technicalData.sectionId} class="technical section" aria-labelledby="technical-title">
+  <div class="container">
+    <header class="section-header" data-animate class="fade-in">
+      <span class="overline">MỤC {technicalData.sectionLabel} · THÔNG SỐ ĐÃ XÁC MINH</span>
+      <h2 id="technical-title" class="display-sm">{technicalData.sectionTitle}</h2>
+      <p class="lead" style="color: var(--text-secondary); max-width: 68ch;">
+        {technicalData.intro}
+      </p>
+    </header>
+
+    <!-- Infographic Stat Cards -->
+    <div class="technical__stats" data-animate class="slide-up">
+      <div class="technical__stat">
+        <span class="technical__stat-unit">TỔ LÁI</span>
+        <div class="technical__stat-value">02</div>
+        <div class="technical__stat-label">Thành viên (Bố trí hai vị trí nối tiếp)</div>
+      </div>
+
+      <div class="technical__stat">
+        <span class="technical__stat-unit">HỆ THỐNG ĐỘNG CƠ</span>
+        <div class="technical__stat-value">2 × AL-31F</div>
+        <div class="technical__stat-label">Tuốc-bin phản lực hai luồng có buồng đốt tăng lực</div>
+      </div>
+
+      <div class="technical__stat">
+        <span class="technical__stat-unit">TRỌNG LƯỢNG CẤT CÁNH TỐI ĐA</span>
+        <div class="technical__stat-value">34.500</div>
+        <div class="technical__stat-label">Kilôgam (MTOW công bố bởi Rosoboronexport)</div>
+      </div>
+
+      <div class="technical__stat">
+        <span class="technical__stat-unit">PHÂN LOẠI NHIỆM VỤ</span>
+        <div class="technical__stat-value" style="font-size: 1.45rem;">Đa năng</div>
+        <div class="technical__stat-label">Không chiến, tuần tra & bảo vệ vùng biển</div>
+      </div>
+    </div>
+
+    <!-- Verified Technical Specification Table -->
+    <div class="technical__table-wrap" data-animate class="slide-up" data-animate-delay="2">
+      <table class="technical__table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 25%;">Thông số nhận diện</th>
+            <th scope="col" style="width: 25%;">Giá trị xác minh</th>
+            <th scope="col" style="width: 50%;">Ý nghĩa kỹ thuật & khai thác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {technicalData.specs.map((spec) => (
+            <tr>
+              <td class="technical__table-label">{spec.param}</td>
+              <td class="technical__table-value" style="font-weight: 600; color: var(--navy-deep);">{spec.value}</td>
+              <td style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">{spec.meaning}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Technical Source Disclaimer -->
+    <aside class="callout callout-info" style="margin-top: var(--space-8); background: white; border-color: var(--border-light); border-left: 3px solid var(--metallic-champagne); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm);" data-animate class="fade-in">
+      <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--metallic-champagne)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; margin: 0;">
+          <strong style="color: var(--navy-deep);">Nguồn dữ liệu Rosoboronexport:</strong> {technicalData.disclaimer}
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+---
+import { historyData } from '../data/content';
+
+const worldEvents = historyData.timeline.filter((e) => e.era === 'world');
+const vietnamEvents = historyData.timeline.filter((e) => e.era === 'vietnam');
+---
+
+<section id={historyData.sectionId} class="timeline section section-dark" aria-labelledby="history-title">
+  <div class="container">
+    <header class="section-header" data-animate class="fade-in">
+      <span class="overline">MỤC {historyData.sectionLabel} · DÒNG THỜI GIAN</span>
+      <h2 id="history-title" class="display-sm" style="color: var(--museum-ivory);">{historyData.sectionTitle}</h2>
+      <p class="lead" style="color: var(--text-on-dark); opacity: 0.85; max-width: 65ch;">
+        Từ nền tảng thiết kế Liên Xô đến hành trình phục vụ trong Không quân Nhân dân Việt Nam — tiến trình phát triển và tiếp nhận dòng tiêm kích đa năng.
+      </p>
+    </header>
+
+    <div class="timeline__track">
+      <!-- Era 1: Bối cảnh thế giới -->
+      <div class="timeline__era" data-animate class="slide-up">
+        <span class="timeline__era-label">GIAI ĐOẠN 01 · QUỐC TẾ</span>
+        <h3 class="timeline__era-title">Nguồn gốc & Quá trình phát triển dòng Su-30</h3>
+      </div>
+
+      {worldEvents.map((event, idx) => (
+        <article class="timeline__event" data-animate class="slide-up" data-animate-delay={String((idx % 3) + 1)}>
+          <div class="timeline__event-year">{event.year}</div>
+          <h4 class="timeline__event-title">{event.title}</h4>
+          <p class="timeline__event-body">{event.content}</p>
+          <span class="timeline__event-tag timeline__event-tag--world">Lịch sử phát triển quốc tế</span>
+        </article>
+      ))}
+
+      <!-- Era 2: Việt Nam -->
+      <div class="timeline__era" style="margin-top: var(--space-12);" data-animate class="slide-up">
+        <span class="timeline__era-label">GIAI ĐOẠN 02 · VIỆT NAM</span>
+        <h3 class="timeline__era-title">Hành trình tiếp nhận & Hiện đại hóa tại Việt Nam</h3>
+      </div>
+
+      {vietnamEvents.map((event, idx) => (
+        <article class="timeline__event" data-animate class="slide-up" data-animate-delay={String((idx % 3) + 1)}>
+          <div class="timeline__event-year" style="color: var(--metallic-champagne);">{event.year}</div>
+          <h4 class="timeline__event-title">{event.title}</h4>
+          <p class="timeline__event-body">{event.content}</p>
+          <span class="timeline__event-tag timeline__event-tag--vietnam">Không quân Nhân dân Việt Nam</span>
+        </article>
+      ))}
+    </div>
+
+    {historyData.note && (
+      <aside class="callout callout-note" style="margin-top: var(--space-12); background: rgba(10, 22, 40, 0.8); border-color: rgba(201, 185, 154, 0.3);" data-animate class="fade-in">
+        <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--metallic-champagne)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <p style="font-size: 0.875rem; color: var(--text-on-dark); opacity: 0.85; line-height: 1.6; margin: 0;">
+            <strong style="color: var(--metallic-champagne);">Lưu ý lịch sử:</strong> {historyData.note}
+          </p>
+        </div>
+      </aside>
+    )}
+  </div>
+</section>

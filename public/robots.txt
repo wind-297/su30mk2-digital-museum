@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wind-297.github.io/su30mk2-digital-museum/sitemap.xml

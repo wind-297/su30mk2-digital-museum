@@ -1,0 +1,73 @@
+---
+import { overviewData } from '../data/content';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section id={overviewData.sectionId} class="overview section" aria-labelledby="overview-title">
+  <div class="container">
+    <header class="section-header" data-animate class="fade-in">
+      <span class="overline">MỤC {overviewData.sectionLabel} · TỔNG QUAN HIỆN VẬT</span>
+      <h2 id="overview-title" class="display-sm">{overviewData.sectionTitle}</h2>
+    </header>
+
+    <div class="overview__grid">
+      <!-- Left Editorial Column -->
+      <div class="overview__content" data-animate class="slide-up">
+        <p class="lead" style="margin-bottom: var(--space-6); color: var(--text-primary); font-size: 1.15rem; line-height: 1.75;">
+          {overviewData.intro}
+        </p>
+
+        <div class="editorial-block" style="margin-bottom: var(--space-6);">
+          <h3 class="h3" style="margin-bottom: var(--space-3); color: var(--navy-deep, #0d1721);">Hệ thống định danh</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            {overviewData.naming}
+          </p>
+        </div>
+
+        <div class="editorial-block">
+          <h3 class="h3" style="margin-bottom: var(--space-3); color: var(--navy-deep, #0d1721);">Tại Việt Nam</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem;">
+            {overviewData.vietnamContext}
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Identification Card & Image -->
+      <div class="overview__aside" data-animate class="slide-up" data-animate-delay="2">
+        <div class="overview__card">
+          <div class="overview__card-header">
+            <div>
+              <span class="overview__card-id">HỒ SƠ HIỆN VẬT #SU30-MK2</span>
+              <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-top: 4px; color: var(--navy-deep);">Thẻ nhận diện hiện vật</h3>
+            </div>
+            <span class="overview__card-classification">TIÊM KÍCH ĐA NĂNG</span>
+          </div>
+
+          <div class="overview__specs">
+            {overviewData.details.map((detail) => (
+              <div class="overview__spec-item">
+                <div class="overview__spec-label">{detail.label}</div>
+                <div class="overview__spec-value">{detail.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Museum Image of Su-30MK2 -->
+        <div class="overview__image" style="margin-top: var(--space-6);">
+          <img
+            src={`${baseUrl}images/su30mk2-8533.jpg`}
+            alt="Su-30MK2 số hiệu 8533 của Không quân Nhân dân Việt Nam"
+            width="960"
+            height="640"
+            loading="lazy"
+          />
+          <figcaption class="overview__image-caption">
+            Su-30MK2 số hiệu 8533 · Không quân Nhân dân Việt Nam (Ảnh tư liệu)
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,175 @@
+---
+import { navItems, siteConfig, referencesData } from '../data/content';
+---
+
+<footer class="footer" id="footer" aria-label="Chân trang bảo tàng số">
+  <div class="footer-border"></div>
+  <div class="footer-inner container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2 class="footer-title">SU-30MK2</h2>
+        <p class="footer-project">{siteConfig.projectName}</p>
+        <p style="font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6); line-height: 1.6; margin-top: var(--space-2); max-width: 38ch;">
+          Website triển lãm số lưu trữ và thuyết minh hiện vật hàng không quân sự phục vụ học tập, nghiên cứu và giáo dục quốc phòng.
+        </p>
+      </div>
+
+      <div class="footer-nav">
+        <h3 class="footer-heading">Mục triển lãm</h3>
+        <ul class="footer-nav-list">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} class="footer-link">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-refs">
+        <h3 class="footer-heading">Nguồn tư liệu chính</h3>
+        <ul class="footer-refs-list">
+          {referencesData.sources.slice(0, 5).map((source) => (
+            <li>
+              <a href={source.url} class="footer-link" target="_blank" rel="noopener noreferrer">
+                {source.publisher} — {source.title.length > 36 ? source.title.substring(0, 36) + '…' : source.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        © 2024 Dự án Giáo dục Quốc phòng: <strong>EM LÀ NHÀ SÁNG TẠO – BẢO TÀNG QUỐC PHÒNG VIỆT NAM</strong>
+      </p>
+      <p class="footer-disclaimer" style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.45); max-width: 75ch; margin: var(--space-2) auto; line-height: 1.6;">
+        <em>Lưu ý pháp lý:</em> Đây là website học tập thuộc dự án sáng tạo giáo dục phi thương mại, không phải cổng thông tin chính thức của Bảo tàng Lịch sử Quân sự Việt Nam hay Bộ Quốc phòng. Nội dung được biên tập dựa trên các nguồn tư liệu lịch sử và thông cáo báo chí công khai đã được xác minh.
+      </p>
+      <p class="footer-credits">
+        Ghi công hình ảnh: Wikimedia Commons (US Embassy Hanoi - Public Domain, Cougr - CC BY-SA 4.0, Hoangprs5 - CC BY-SA 4.0).
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--midnight-navy, #0a1628);
+    color: rgba(255, 255, 255, 0.75);
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-border {
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--metallic-champagne, #c9b99a) 20%,
+      var(--metallic-champagne, #c9b99a) 80%,
+      transparent 100%
+    );
+  }
+
+  .footer-inner {
+    padding: var(--space-16) var(--space-6) var(--space-8);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: var(--space-10);
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--metallic-champagne, #c9b99a);
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .footer-project {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+  }
+
+  .footer-heading {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--metallic-champagne, #c9b99a);
+    margin: 0 0 var(--space-4);
+    font-weight: 600;
+  }
+
+  .footer-nav-list,
+  .footer-refs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+    line-height: 1.5;
+  }
+
+  .footer-link:hover {
+    color: var(--metallic-champagne, #c9b99a);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .footer-copyright {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .footer-credits {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .footer-inner {
+      padding: var(--space-10) var(--space-4) var(--space-6);
+    }
+  }
+</style>

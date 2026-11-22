@@ -1,0 +1,60 @@
+---
+import { referencesData } from '../data/content';
+---
+
+<section id={referencesData.sectionId} class="references section section-light" aria-labelledby="references-title">
+  <div class="container">
+    <header class="section-header" data-animate class="fade-in">
+      <span class="overline">MỤC {referencesData.sectionLabel} · NGUỒN TƯ LIỆU XÁC MINH</span>
+      <h2 id="references-title" class="display-sm">{referencesData.sectionTitle}</h2>
+      <p class="lead" style="color: var(--text-secondary); max-width: 70ch;">
+        {referencesData.intro}
+      </p>
+    </header>
+
+    <div class="references__list" data-animate class="slide-up">
+      {referencesData.sources.map((source, index) => (
+        <article class="references__item">
+          <div>
+            <div>
+              <span class="references__author">{source.publisher}</span>
+              {source.author && <span> — {source.author}</span>}
+              {source.date && <span class="references__year"> ({source.date})</span>}
+              <span>: </span>
+              <span class="references__title">"{source.title}"</span>.
+            </div>
+            <p style="margin: var(--space-2) 0; font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;">
+              {source.description}
+            </p>
+            <div>
+              <a
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="references__link"
+                aria-label={`Truy cập nguồn tham khảo: ${source.title} (mở tab mới)`}
+              >
+                <span>Xem tài liệu gốc</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-left: 4px;" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .references__link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>

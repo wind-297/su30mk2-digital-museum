@@ -1,0 +1,104 @@
+---
+import { roleData } from '../data/content';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section id={roleData.sectionId} class="role section" aria-labelledby="role-title">
+  <div class="container">
+    <header class="section-header" data-animate class="fade-in">
+      <span class="overline">MỤC {roleData.sectionLabel} · CÔNG DỤNG & VAI TRÒ</span>
+      <h2 id="role-title" class="display-sm">{roleData.sectionTitle}</h2>
+      <p class="lead" style="color: var(--text-secondary); max-width: 68ch;">
+        {roleData.intro}
+      </p>
+    </header>
+
+    <!-- Editorial Featured Block -->
+    <div class="role__featured" data-animate class="slide-up">
+      <div class="role__featured-image">
+        <img
+          src={`${baseUrl}images/vpaf-flight.jpg`}
+          alt="Su-30MK2 của Không quân Nhân dân Việt Nam thực hiện bài bay huấn luyện tuần tra"
+          width="1600"
+          height="1066"
+          loading="lazy"
+        />
+      </div>
+      <div class="role__featured-content">
+        <span class="overline" style="color: var(--metallic-champagne);">BẢN CHẤT ĐA NHIỆM</span>
+        <h3 class="h3" style="margin-bottom: var(--space-4); color: var(--navy-deep);">
+          {roleData.multirole.title}
+        </h3>
+        <p style="color: var(--text-secondary); line-height: 1.75; font-size: 0.95rem; margin-bottom: var(--space-4);">
+          {roleData.multirole.content}
+        </p>
+        <blockquote style="border-left: 2px solid var(--metallic-champagne); padding-left: var(--space-4); margin: 0; font-style: italic; font-size: 0.875rem; color: var(--text-muted);">
+          {roleData.multirole.source}
+        </blockquote>
+      </div>
+    </div>
+
+    <!-- Mission Cards Grid -->
+    <div class="role__grid" data-animate class="slide-up" data-animate-delay="2">
+      {roleData.missions.map((mission, idx) => (
+        <article class="role__card">
+          <div class="role__card-icon" aria-hidden="true">
+            {mission.icon === 'shield' && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            )}
+            {mission.icon === 'waves' && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+                <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+                <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+              </svg>
+            )}
+            {mission.icon === 'users' && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            )}
+            {mission.icon === 'target' && (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            )}
+          </div>
+          <div class="role__card-body">
+            <span class="role__card-label">NHIỆM VỤ 0{idx + 1}</span>
+            <h4 class="role__card-title">{mission.title}</h4>
+            <p class="role__card-desc">{mission.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Editorial Pullquote for Vietnam Significance -->
+    <div class="vietnam__pullquote" style="margin: var(--space-12) 0;" data-animate class="fade-in">
+      <blockquote>
+        "{roleData.vietnamSignificance}"
+      </blockquote>
+    </div>
+
+    <!-- Closing Insight & Caveat -->
+    <div class="role__closing" data-animate class="slide-up">
+      <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1rem; max-width: var(--reading-width); margin: 0 auto var(--space-6); text-align: center;">
+        {roleData.closing}
+      </p>
+
+      <aside class="callout callout-info" style="max-width: var(--reading-width); margin: 0 auto; background: white; border-color: var(--border-light); border-left: 3px solid var(--steel-blue); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm);">
+        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+          <strong style="color: var(--navy-deep);">Lưu ý cấu hình:</strong> {roleData.caveat}
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>

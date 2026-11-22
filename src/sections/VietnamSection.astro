@@ -1,0 +1,152 @@
+---
+import { vietnamData } from '../data/content';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section id={vietnamData.sectionId} class="vietnam" aria-labelledby="vietnam-title">
+  <!-- Part A: Dark Editorial Theme - Modernization & National Defense -->
+  <div class="vietnam__dark section-dark">
+    <div class="container">
+      <header class="section-header" data-animate class="fade-in">
+        <span class="overline" style="color: var(--metallic-champagne);">MỤC {vietnamData.sectionLabel} · QUỐC PHÒNG VIỆT NAM</span>
+        <h2 id="vietnam-title" class="display-sm" style="color: var(--museum-ivory);">{vietnamData.sectionTitle}</h2>
+        <p class="lead" style="color: var(--text-on-dark); opacity: 0.85; max-width: 68ch;">
+          Dấu ấn bước ngoặt trong tiến trình xây dựng và hiện đại hóa lực lượng Không quân Nhân dân Việt Nam thế kỷ XXI.
+        </p>
+      </header>
+
+      <!-- Key Modernization Statistics Banner -->
+      <div class="vietnam__stats" data-animate class="slide-up">
+        <div>
+          <div class="vietnam__stat-number">2004</div>
+          <div class="vietnam__stat-label">Năm đầu tiên tiếp nhận máy bay dòng Su-30 tại Việt Nam</div>
+        </div>
+        <div>
+          <div class="vietnam__stat-number">36</div>
+          <div class="vietnam__stat-label">Máy bay dòng Su-30 được báo chí công khai ghi nhận tiếp nhận (2004–2016)</div>
+        </div>
+        <div>
+          <div class="vietnam__stat-number">935 & 927</div>
+          <div class="vietnam__stat-label">Các trung đoàn không quân chủ lực trực tiếp quản lý, khai thác và đào tạo</div>
+        </div>
+        <div>
+          <div class="vietnam__stat-number">100%</div>
+          <div class="vietnam__stat-label">Lực lượng phi công, kỹ sư Việt Nam độc lập làm chủ trang bị kỹ thuật</div>
+        </div>
+      </div>
+
+      <!-- Editorial Feature 1: Modernization & Sovereignty -->
+      <div class="vietnam__editorial" data-animate class="slide-up">
+        <div class="vietnam__editorial-content">
+          <span class="overline" style="color: var(--metallic-champagne);">TIẾN TRÌNH HIỆN ĐẠI HÓA</span>
+          <h3 class="h3" style="color: var(--museum-ivory); margin-bottom: var(--space-4);">
+            {vietnamData.modernization.title}
+          </h3>
+          <p style="color: var(--text-on-dark); opacity: 0.9; line-height: 1.8; margin-bottom: var(--space-4); font-size: 0.95rem;">
+            {vietnamData.modernization.content}
+          </p>
+          <p style="color: var(--text-on-dark); opacity: 0.8; line-height: 1.75; font-size: 0.9rem;">
+            {vietnamData.modernization.detail}
+          </p>
+        </div>
+
+        <div class="vietnam__editorial-image">
+          <img
+            src={`${baseUrl}images/vpaf-flares.jpg`}
+            alt="Su-30MK2 Không quân Nhân dân Việt Nam thực hiện bài bay cơ động phóng mồi bẫy nhiệt"
+            width="1600"
+            height="1066"
+            loading="lazy"
+          />
+          <figcaption>
+            Su-30MK2 Không quân Nhân dân Việt Nam thực hiện thao diễn cơ động trên bầu trời Tổ quốc
+          </figcaption>
+        </div>
+      </div>
+
+      <!-- Core Principle Callout -->
+      <div class="vietnam__pullquote" data-animate class="fade-in">
+        <blockquote>
+          "{vietnamData.modernization.principle}"
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part B: Light Editorial Theme - Personnel, Training & National Guardianship -->
+  <div class="vietnam__light section-light">
+    <div class="container">
+      <div class="vietnam__editorial vietnam__editorial--reverse" data-animate class="slide-up">
+        <div class="vietnam__editorial-content">
+          <span class="overline" style="color: var(--steel-blue);">NHIỆM VỤ THIÊNG LIÊNG</span>
+          <h3 class="h3" style="color: var(--navy-deep); margin-bottom: var(--space-4);">
+            {vietnamData.sovereignty.title}
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4); font-size: 0.95rem;">
+            {vietnamData.sovereignty.content}
+          </p>
+          <div style="background: white; border-left: 3px solid var(--steel-blue); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm); margin-bottom: var(--space-4); box-shadow: var(--shadow-sm);">
+            <p style="font-size: 0.875rem; color: var(--navy-deep); font-weight: 600; margin-bottom: var(--space-1);">
+              Trung đoàn Không quân 935 — Sư đoàn 370 ("Hổ mang chúa")
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              {vietnamData.sovereignty.regiment}
+            </p>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; font-style: italic;">
+            {vietnamData.sovereignty.broader}
+          </p>
+        </div>
+
+        <!-- Pilot & Technicians In-depth Focus Card -->
+        <div class="vietnam__editorial-content" style="background: white; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-8); box-shadow: var(--shadow-sm);">
+          <span class="overline" style="color: var(--metallic-champagne);">CON NGƯỜI LÀ TRỌNG TÂM</span>
+          <h3 class="h3" style="color: var(--navy-deep); margin-bottom: var(--space-4);">
+            {vietnamData.personnel.title}
+          </h3>
+
+          <div style="margin-bottom: var(--space-4);">
+            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy-deep); margin-bottom: var(--space-1);">
+              Bản lĩnh & Trình độ Phi công
+            </h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">
+              {vietnamData.personnel.pilotTraining}
+            </p>
+          </div>
+
+          <div style="margin-bottom: var(--space-4);">
+            <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy-deep); margin-bottom: var(--space-1);">
+              Cán bộ & Kỹ sư Bảo đảm Kỹ thuật
+            </h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">
+              {vietnamData.personnel.technicians}
+            </p>
+          </div>
+
+          <div style="padding-top: var(--space-4); border-top: 1px solid var(--border-light);">
+            <p style="font-size: 0.85rem; color: var(--steel-blue); line-height: 1.6; margin-bottom: var(--space-2);">
+              <strong>Kinh nghiệm Trung đoàn 927:</strong> {vietnamData.personnel.regiment927}
+            </p>
+            <p style="font-size: 0.85rem; color: var(--steel-blue); line-height: 1.6; margin: 0;">
+              <strong>Kiểm tra phân cấp 2024:</strong> {vietnamData.personnel.evaluation}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Defense Legacy Conclusion Block -->
+      <div style="margin-top: var(--space-12); padding: var(--space-8); background: white; border: 1px solid var(--border-light); border-radius: var(--radius-md); text-align: center;" data-animate class="fade-in">
+        <h4 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--navy-deep); margin-bottom: var(--space-3);">
+          {vietnamData.defense.title}
+        </h4>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; max-width: 65ch; margin: 0 auto var(--space-3);">
+          {vietnamData.defense.content}
+        </p>
+        <p style="font-size: 0.95rem; color: var(--text-primary); font-weight: 500; line-height: 1.8; max-width: 65ch; margin: 0 auto;">
+          {vietnamData.defense.technology}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

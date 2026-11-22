@@ -1,0 +1,98 @@
+---
+import { navItems } from '../data/content';
+---
+
+<header class="nav" id="main-nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo" aria-label="Trang chủ Su-30MK2">
+      <svg class="nav__logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M16 2L20 12L29 15L20 18L16 28L12 18L3 15L12 12L16 2Z" fill="var(--metallic-champagne, #c9b99a)"/>
+        <circle cx="16" cy="15" r="2.5" fill="var(--midnight-navy, #0a1628)"/>
+      </svg>
+      <div>
+        <span>SU-30MK2</span>
+        <span class="nav__logo-sub">Hồ sơ hiện vật hàng không</span>
+      </div>
+    </a>
+
+    <nav class="nav__links" aria-label="Điều hướng chính">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav__link">{item.label}</a>
+      ))}
+    </nav>
+
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Mở trình đơn" aria-expanded="false" aria-controls="nav-mobile">
+      <span class="nav__hamburger-line"></span>
+      <span class="nav__hamburger-line"></span>
+      <span class="nav__hamburger-line"></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="nav-mobile" aria-label="Trình đơn di động">
+    <div class="nav-mobile__links">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-mobile__link">{item.label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  function initNavigation() {
+    const nav = document.getElementById('main-nav');
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('nav-mobile');
+    const mobileLinks = mobileMenu?.querySelectorAll('.nav-mobile__link');
+    const allNavLinks = document.querySelectorAll('.nav__link, .nav-mobile__link');
+
+    if (!nav || !hamburger || !mobileMenu) return;
+
+    // Scroll state
+    function updateScroll() {
+      if (window.scrollY > 40) {
+        nav.classList.add('is-scrolled');
+      } else {
+        nav.classList.remove('is-scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    updateScroll();
+
+    // Hamburger toggle
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.contains('is-open');
+      hamburger.classList.toggle('is-open');
+      mobileMenu.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+
+    // Mobile links close menu
+    mobileLinks?.forEach((link) => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('is-open');
+        mobileMenu.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Smooth scroll offset for fixed nav
+    allNavLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#') && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const navHeight = nav.offsetHeight || 60;
+            const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initNavigation);
+</script>

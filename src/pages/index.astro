@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import HeroSection from '../sections/HeroSection.astro';
+import OverviewSection from '../sections/OverviewSection.astro';
+import HistorySection from '../sections/HistorySection.astro';
+import RoleSection from '../sections/RoleSection.astro';
+import AnatomySection from '../sections/AnatomySection.astro';
+import TechnicalSection from '../sections/TechnicalSection.astro';
+import VietnamSection from '../sections/VietnamSection.astro';
+import ConclusionSection from '../sections/ConclusionSection.astro';
+import ReferencesSection from '../sections/ReferencesSection.astro';
+import FooterSection from '../sections/FooterSection.astro';
+---
+
+<Layout
+  title="Sukhoi Su-30MK2 — Bảo tàng Số Hiện vật Hàng không Quốc phòng Việt Nam"
+  description="Website triển lãm số thuyết minh chuyên sâu máy bay tiêm kích đa năng Sukhoi Su-30MK2 thuộc Không quân Nhân dân Việt Nam. Dự án giáo dục: Em là nhà sáng tạo."
+>
+  <Navigation />
+  <main id="main-content">
+    <HeroSection />
+    <OverviewSection />
+    <HistorySection />
+    <RoleSection />
+    <AnatomySection />
+    <TechnicalSection />
+    <VietnamSection />
+    <ConclusionSection />
+    <ReferencesSection />
+  </main>
+  <FooterSection />
+</Layout>

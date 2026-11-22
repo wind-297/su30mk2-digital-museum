@@ -1,0 +1,44 @@
+---
+import { conclusionData } from '../data/content';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section id={conclusionData.sectionId} class="conclusion section-dark" aria-labelledby="conclusion-title">
+  <div class="conclusion__bg" aria-hidden="true">
+    <img
+      src={`${baseUrl}images/hero-su30mk2.jpg`}
+      alt="Sukhoi Su-30MK2 bay trên bầu trời Tổ quốc"
+      width="1920"
+      height="1080"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="container conclusion__content">
+    <div data-animate class="fade-in">
+      <span class="conclusion__overline">TỔNG KẾT HỒ SƠ HIỆN VẬT · GIÁ TRỊ VĂN HÓA & QUỐC PHÒNG</span>
+      <h2 id="conclusion-title" class="conclusion__title">
+        {conclusionData.title}
+      </h2>
+      <hr class="conclusion__divider" aria-hidden="true" />
+    </div>
+
+    <div class="conclusion__editorial" data-animate class="slide-up">
+      {conclusionData.paragraphs.map((p) => (
+        <p class="conclusion__body">{p}</p>
+      ))}
+    </div>
+
+    <blockquote class="conclusion__quote" data-animate class="fade-in" data-animate-delay="2">
+      "Đằng sau những hệ thống kỹ thuật hiện đại là bản lĩnh, trí tuệ và sự lao động thầm lặng của những người lính canh giữ bầu trời Tổ quốc."
+      <cite>EM LÀ NHÀ SÁNG TẠO · BẢO TÀNG QUỐC PHÒNG VIỆT NAM</cite>
+    </blockquote>
+  </div>
+</section>
+
+<style>
+  .conclusion__editorial {
+    margin: var(--space-8) 0;
+  }
+</style>

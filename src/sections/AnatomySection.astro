@@ -1,0 +1,284 @@
+---
+import { anatomyData } from '../data/content';
+---
+
+<section id={anatomyData.sectionId} class="anatomy section section-dark" aria-labelledby="anatomy-title">
+  <div class="container">
+    <header class="section-header" data-animate class="fade-in">
+      <span class="overline" style="color: var(--metallic-champagne);">MỤC {anatomyData.sectionLabel} · KHÁM PHÁ CẤU TẠO</span>
+      <h2 id="anatomy-title" class="display-sm" style="color: var(--museum-ivory);">{anatomyData.sectionTitle}</h2>
+      <p class="lead" style="color: var(--text-on-dark); opacity: 0.85; max-width: 70ch;">
+        {anatomyData.intro}
+      </p>
+    </header>
+
+    <!-- Interactive Technical Blueprint Diagram -->
+    <div class="anatomy__diagram" data-animate class="fade-in">
+      <div class="diagram-container" style="position: relative; width: 100%; border-radius: var(--radius-md); background: radial-gradient(circle at 50% 50%, rgba(20, 36, 56, 0.95), rgba(10, 22, 40, 0.98)); border: 1px solid rgba(201, 185, 154, 0.2); padding: var(--space-6) var(--space-2); overflow: hidden;">
+        <!-- Technical blueprint grid lines -->
+        <div class="blueprint-grid" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(107, 130, 153, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(107, 130, 153, 0.08) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none;" aria-hidden="true"></div>
+
+        <!-- Technical Corner Badges -->
+        <div style="position: absolute; top: 12px; left: 16px; font-family: var(--font-mono); font-size: 0.625rem; color: var(--metallic-champagne); letter-spacing: 0.15em; text-transform: uppercase;" aria-hidden="true">
+          SƠ ĐỒ KỸ THUẬT · SU-30MK2 SIDE-VIEW SCHEMATIC
+        </div>
+        <div style="position: absolute; top: 12px; right: 16px; font-family: var(--font-mono); font-size: 0.625rem; color: var(--steel-blue-light); letter-spacing: 0.1em;" aria-hidden="true">
+          TỶ LỆ KHẢO SÁT 2D
+        </div>
+
+        <!-- SVG Silhouette of Su-30MK2 -->
+        <svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;" aria-label="Sơ đồ kỹ thuật cấu tạo 2D máy bay tiêm kích Su-30MK2">
+          <defs>
+            <linearGradient id="planeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4a6572" stop-opacity="0.3"/>
+              <stop offset="50%" stop-color="#23395d" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#192a3e" stop-opacity="0.6"/>
+            </linearGradient>
+            <linearGradient id="glowLine" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#c9b99a"/>
+              <stop offset="50%" stop-color="#e6ecf2"/>
+              <stop offset="100%" stop-color="#c9b99a"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Outer construction & centerlines -->
+          <line x1="40" y1="210" x2="960" y2="210" stroke="rgba(107, 130, 153, 0.25)" stroke-dasharray="4,6" stroke-width="1"/>
+          <line x1="240" y1="40" x2="240" y2="380" stroke="rgba(107, 130, 153, 0.15)" stroke-dasharray="2,4" stroke-width="1"/>
+          <line x1="780" y1="40" x2="780" y2="380" stroke="rgba(107, 130, 153, 0.15)" stroke-dasharray="2,4" stroke-width="1"/>
+
+          <!-- Su-30MK2 Side View Airframe Paths -->
+          <g fill="url(#planeGrad)" stroke="var(--metallic-champagne)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Nose Radome -->
+            <path d="M45,210 Q45,200 70,195 L140,190 L180,188 L180,225 L140,223 L70,220 Q45,218 45,210 Z" />
+            <!-- Pitot Tube -->
+            <line x1="25" y1="210" x2="45" y2="210" stroke="var(--metallic-champagne)" stroke-width="1.5"/>
+
+            <!-- Forward Fuselage & Cockpit Section -->
+            <path d="M180,188 L210,185 Q230,140 280,135 L360,142 Q380,155 390,180 L480,180 L480,226 L360,227 L260,227 L180,225 Z" />
+            <!-- Canopy Glass Division (Tandem 2 seats) -->
+            <path d="M220,183 Q240,145 285,140 L350,145 Q370,155 380,178" fill="rgba(107, 130, 153, 0.35)" stroke="#e6ecf2" stroke-width="1.2"/>
+            <line x1="290" y1="140" x2="295" y2="182" stroke="var(--metallic-champagne)" stroke-width="1.5"/>
+            <!-- Pilot silhouettes indication -->
+            <circle cx="260" cy="165" r="7" fill="rgba(201, 185, 154, 0.6)"/>
+            <circle cx="325" cy="160" r="7" fill="rgba(201, 185, 154, 0.6)"/>
+
+            <!-- Mid Fuselage & Blended Wing-Body Section (LERX) -->
+            <path d="M390,180 Q450,178 520,175 L680,175 L740,180 L740,235 L680,238 L520,238 Q450,235 390,230 Z" />
+
+            <!-- Swept Wing Root & Wing Contour -->
+            <path d="M420,228 L350,305 Q345,315 355,318 L375,320 Q385,318 440,285 L580,236 Z" fill="rgba(26, 36, 48, 0.7)"/>
+
+            <!-- Underside Air Intake (Left & Right) -->
+            <path d="M350,227 L360,255 L470,255 L500,236 L430,236 L365,236 Z" fill="rgba(20, 32, 48, 0.85)" stroke="#6b8299" stroke-width="1.5"/>
+
+            <!-- Twin Vertical Stabilizers (Characteristic Su-30MK2 tall fins) -->
+            <!-- Fin 1 -->
+            <path d="M720,178 L740,75 Q745,65 755,65 L785,68 Q792,72 790,82 L775,180 Z" fill="rgba(35, 57, 93, 0.75)" stroke="var(--metallic-champagne)" stroke-width="1.8"/>
+            <!-- Fin 2 (offset background) -->
+            <path d="M750,175 L770,70 Q775,60 785,60 L815,63 Q822,67 820,77 L805,178 Z" fill="rgba(20, 32, 48, 0.6)" stroke="#829db0" stroke-width="1.2"/>
+
+            <!-- Rear Fuselage & "Stinger" Tail Cone -->
+            <path d="M740,180 L840,190 L900,198 L920,205 L920,215 L900,220 L840,228 L740,235 Z" fill="rgba(26, 36, 48, 0.8)"/>
+
+            <!-- Twin AL-31F Engine Nacelles & Exhaust Nozzles -->
+            <path d="M680,215 L860,215 L890,212 L905,214 L905,228 L890,230 L860,228 L680,228 Z" fill="#142030" stroke="#e6ecf2" stroke-width="1.5"/>
+            <!-- Afterburner Nozzle Lines -->
+            <line x1="885" y1="210" x2="885" y2="232" stroke="var(--metallic-champagne)" stroke-width="1.5"/>
+            <line x1="895" y1="211" x2="895" y2="231" stroke="var(--metallic-champagne)" stroke-width="1.5"/>
+
+            <!-- Horizontal Stabilizer -->
+            <path d="M780,220 L750,270 Q748,276 754,278 L775,278 L840,230 Z" fill="rgba(35, 57, 93, 0.6)" stroke="#6b8299" stroke-width="1.4"/>
+
+            <!-- Tricycle Landing Gear (Illustrative schematic) -->
+            <!-- Front Nose Gear -->
+            <line x1="240" y1="227" x2="240" y2="275" stroke="#829db0" stroke-width="2"/>
+            <circle cx="240" cy="282" r="7" fill="#0d1721" stroke="#c9b99a" stroke-width="2"/>
+            <!-- Main Rear Gear -->
+            <line x1="570" y1="238" x2="570" y2="275" stroke="#829db0" stroke-width="2.5"/>
+            <circle cx="566" cy="282" r="8" fill="#0d1721" stroke="#c9b99a" stroke-width="2"/>
+            <circle cx="578" cy="282" r="8" fill="#0d1721" stroke="#c9b99a" stroke-width="2"/>
+          </g>
+
+          <!-- Ground baseline -->
+          <line x1="160" y1="290" x2="700" y2="290" stroke="rgba(107, 130, 153, 0.3)" stroke-width="1" stroke-dasharray="8,4"/>
+        </svg>
+
+        <!-- Interactive Hotspot Buttons placed over diagram -->
+        <!-- 1: Mũi máy bay -->
+        <button class="anatomy__hotspot" style="top: 48%; left: 8%;" data-part-index="0" aria-label="1. Mũi máy bay">
+          <span class="anatomy__hotspot-number">1</span>
+        </button>
+
+        <!-- 2: Buồng lái hai chỗ ngồi -->
+        <button class="anatomy__hotspot" style="top: 34%; left: 28%;" data-part-index="2" aria-label="3. Buồng lái hai chỗ ngồi">
+          <span class="anatomy__hotspot-number">3</span>
+        </button>
+
+        <!-- 3: Thân máy bay -->
+        <button class="anatomy__hotspot" style="top: 47%; left: 47%;" data-part-index="1" aria-label="2. Thân máy bay">
+          <span class="anatomy__hotspot-number">2</span>
+        </button>
+
+        <!-- 4: Cánh chính xuôi sau -->
+        <button class="anatomy__hotspot" style="top: 68%; left: 40%;" data-part-index="3" aria-label="4. Cánh chính">
+          <span class="anatomy__hotspot-number">4</span>
+        </button>
+
+        <!-- 5: Cửa hút khí -->
+        <button class="anatomy__hotspot" style="top: 57%; left: 39%;" data-part-index="6" aria-label="7. Hai cửa hút khí">
+          <span class="anatomy__hotspot-number">7</span>
+        </button>
+
+        <!-- 6: Càng đáp -->
+        <button class="anatomy__hotspot" style="top: 66%; left: 56%;" data-part-index="8" aria-label="9. Càng đáp">
+          <span class="anatomy__hotspot-number">9</span>
+        </button>
+
+        <!-- 7: Đuôi đứng -->
+        <button class="anatomy__hotspot" style="top: 20%; left: 76%;" data-part-index="4" aria-label="5. Hai đuôi đứng">
+          <span class="anatomy__hotspot-number">5</span>
+        </button>
+
+        <!-- 8: Đuôi ngang -->
+        <button class="anatomy__hotspot" style="top: 61%; left: 77%;" data-part-index="5" aria-label="6. Đuôi ngang">
+          <span class="anatomy__hotspot-number">6</span>
+        </button>
+
+        <!-- 9: Động cơ AL-31F -->
+        <button class="anatomy__hotspot" style="top: 50%; left: 88%;" data-part-index="7" aria-label="8. Động cơ AL-31F">
+          <span class="anatomy__hotspot-number">8</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Active Details Panel -->
+    <div id="anatomy-live-panel" style="margin-top: var(--space-8); padding: var(--space-6); background: rgba(26, 36, 48, 0.7); border: 1px solid rgba(201, 185, 154, 0.3); border-radius: var(--radius-md); transition: all 0.3s ease;" aria-live="polite">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
+        <span id="panel-tag" style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--metallic-champagne); letter-spacing: 0.15em; text-transform: uppercase;">
+          CHỌN BỘ PHẬN ĐỂ KHÁM PHÁ
+        </span>
+        <span style="font-size: 0.75rem; color: var(--steel-blue-light);">Nhấp vào số trên sơ đồ hoặc danh sách bên dưới</span>
+      </div>
+      <h3 id="panel-title" style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--museum-ivory); margin-bottom: var(--space-2);">
+        {anatomyData.parts[0].name}
+      </h3>
+      <p id="panel-desc" style="font-size: 0.95rem; color: var(--text-on-dark); opacity: 0.9; line-height: 1.7; margin: 0;">
+        {anatomyData.parts[0].description}
+      </p>
+    </div>
+
+    <!-- Complete Parts Grid / Legend -->
+    <div class="anatomy__legend" data-animate class="slide-up">
+      {anatomyData.parts.map((part, idx) => (
+        <div class="anatomy__legend-item" data-part-index={idx} tabindex="0" role="button" aria-label={`Xem chi tiết ${part.name}`}>
+          <div class="anatomy__legend-number">{idx + 1}</div>
+          <div>
+            <div class="anatomy__legend-label">{part.name}</div>
+            <div class="anatomy__legend-desc">{part.description}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Aerodynamics & Avionics Subsections -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-8); margin-top: var(--space-12);" data-animate class="slide-up">
+      <article style="background: rgba(10, 22, 40, 0.6); padding: var(--space-8); border-radius: var(--radius-md); border-left: 3px solid var(--metallic-champagne);">
+        <span class="overline" style="color: var(--metallic-champagne);">ĐẶC TÍNH KHÍ ĐỘNG HỌC</span>
+        <h3 class="h3" style="color: var(--museum-ivory); margin: var(--space-2) 0 var(--space-4);">
+          Thiết kế khí động học tích hợp
+        </h3>
+        <p style="color: var(--text-on-dark); opacity: 0.85; line-height: 1.75; font-size: 0.95rem;">
+          {anatomyData.aerodynamics}
+        </p>
+      </article>
+
+      <article style="background: rgba(10, 22, 40, 0.6); padding: var(--space-8); border-radius: var(--radius-md); border-left: 3px solid var(--steel-blue);">
+        <span class="overline" style="color: var(--steel-blue-light);">HỆ THỐNG ĐIỆN TỬ HÀNG KHÔNG</span>
+        <h3 class="h3" style="color: var(--museum-ivory); margin: var(--space-2) 0 var(--space-4);">
+          {anatomyData.avionics.title}
+        </h3>
+        <p style="color: var(--text-on-dark); opacity: 0.85; line-height: 1.75; font-size: 0.95rem; margin-bottom: var(--space-4);">
+          {anatomyData.avionics.content}
+        </p>
+        <p style="color: var(--text-on-dark); opacity: 0.8; line-height: 1.7; font-size: 0.9rem;">
+          {anatomyData.avionics.integration}
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initAnatomyInteractivity() {
+    const partsData = [
+      { name: "Mũi và thân máy bay", desc: "Thân máy bay là kết cấu trung tâm liên kết các bộ phận và chứa những hệ thống kỹ thuật thiết yếu. Mũi thuôn dài tạo nên dáng vẻ đặc trưng của dòng Su-30 và là nơi bố trí hệ thống radar cùng các cảm biến." },
+      { name: "Thân máy bay", desc: "Kết cấu trung tâm, liên kết cánh, đuôi và buồng lái; bên trong chứa khoang nhiên liệu lớn cho tầm bay xa và các hệ thống điều khiển hàng không phức tạp." },
+      { name: "Buồng lái hai chỗ ngồi", desc: "Bố trí hai vị trí nối tiếp theo chiều dài thân. Phi công chính ngồi trước điều khiển máy bay; vị trí phía sau hỗ trợ tác chiến, hoa tiêu và đặc biệt có ý nghĩa huấn luyện, đào tạo phi công." },
+      { name: "Cánh chính", desc: "Đặt đối xứng hai bên thân, có dạng xuôi về phía sau. Tạo lực nâng khí động học ưu việt khi không khí chuyển động qua bề mặt, hỗ trợ khả năng cơ động cao." },
+      { name: "Hai đuôi đứng", desc: "Hai cánh đuôi đứng cao đặt ở phần cuối thân, giúp duy trì độ ổn định theo phương hướng — dấu hiệu nhận diện đặc trưng kế thừa từ họ Su-27." },
+      { name: "Đuôi ngang", desc: "Các bề mặt đuôi ngang tham gia điều khiển chuyển động theo phương thẳng đứng (góc ngẩng), đóng vai trò then chốt trong cấu trúc kiểm soát bay." },
+      { name: "Hai cửa hút khí", desc: "Bố trí phía dưới thân giúp cung cấp lượng không khí ổn định cho động cơ phản lực ở nhiều góc bay và vận tốc khác nhau." },
+      { name: "Hai động cơ phản lực AL-31F", desc: "Động cơ tuốc-bin phản lực hai luồng có buồng đốt tăng lực, bố trí song song phía sau thân tạo lực đẩy phản lực mạnh mẽ cho toàn bộ máy bay." },
+      { name: "Càng đáp", desc: "Hệ thống ba bánh thu thả chắc chắn, hỗ trợ chịu tải trọng máy bay khi cất cánh, hạ cánh và di chuyển mặt đất trong mọi điều kiện thời tiết." }
+    ];
+
+    const hotspots = document.querySelectorAll('.anatomy__hotspot');
+    const legendItems = document.querySelectorAll('.anatomy__legend-item');
+    const panelTitle = document.getElementById('panel-title');
+    const panelDesc = document.getElementById('panel-desc');
+    const panelTag = document.getElementById('panel-tag');
+
+    function selectPart(index: number) {
+      const part = partsData[index];
+      if (!part) return;
+
+      hotspots.forEach(h => {
+        const idx = Number(h.getAttribute('data-part-index'));
+        if (idx === index) {
+          h.classList.add('is-active');
+        } else {
+          h.classList.remove('is-active');
+        }
+      });
+
+      legendItems.forEach(item => {
+        const idx = Number(item.getAttribute('data-part-index'));
+        if (idx === index) {
+          item.classList.add('is-active');
+        } else {
+          item.classList.remove('is-active');
+        }
+      });
+
+      if (panelTitle) panelTitle.textContent = `${index + 1}. ${part.name}`;
+      if (panelDesc) panelDesc.textContent = part.desc;
+      if (panelTag) panelTag.textContent = `BỘ PHẬN 0${index + 1} / 09`;
+    }
+
+    hotspots.forEach(hotspot => {
+      hotspot.addEventListener('click', () => {
+        const idx = Number(hotspot.getAttribute('data-part-index'));
+        selectPart(idx);
+      });
+    });
+
+    legendItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const idx = Number(item.getAttribute('data-part-index'));
+        selectPart(idx);
+      });
+      item.addEventListener('keydown', (e) => {
+        if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+          e.preventDefault();
+          const idx = Number(item.getAttribute('data-part-index'));
+          selectPart(idx);
+        }
+      });
+    });
+
+    // Default select first part
+    selectPart(0);
+  }
+
+  document.addEventListener('DOMContentLoaded', initAnatomyInteractivity);
+</script>
