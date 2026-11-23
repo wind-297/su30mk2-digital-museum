@@ -41,11 +41,13 @@
   align-items: center;
   gap: var(--space-3);
   color: var(--museum-ivory);
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   white-space: nowrap;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1;
 }
 
 .nav__logo-icon {
@@ -292,13 +294,15 @@
 }
 
 .hero__title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 7vw + 1rem, 6rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
   color: var(--museum-ivory);
-  letter-spacing: -0.03em;
+  letter-spacing: 0.04em;
   margin-bottom: var(--space-6);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1;
 }
 
 .hero__title span {
@@ -821,15 +825,18 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  margin-bottom: var(--space-10);
-  padding-bottom: var(--space-10);
-  border-bottom: 1px solid var(--border-light);
+  margin-bottom: var(--space-12);
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .role__featured-image {
-  border-radius: var(--radius-md);
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  position: relative;
+  min-height: 280px;
 }
 
 .role__featured-image img {
@@ -842,6 +849,43 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: var(--space-8);
+}
+
+.role__pullquote {
+  max-width: 960px;
+  margin: var(--space-12) auto;
+  padding: var(--space-8) var(--space-10);
+  background: white;
+  border: 1px solid var(--border-light);
+  border-top: 3px solid var(--metallic-champagne);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.role__pullquote blockquote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  font-style: italic;
+  color: var(--navy-deep);
+  line-height: 1.75;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.role__pullquote-author {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel-blue);
+  margin-top: var(--space-4);
+  font-style: normal;
+  text-align: right;
 }
 
 @media (min-width: 768px) {
@@ -855,22 +899,26 @@
   }
 
   .role__featured {
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: var(--space-10);
+    grid-template-columns: 1.25fr 1fr;
+  }
+
+  .role__featured-content {
+    padding: var(--space-10);
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .role {
     padding: var(--space-24) 0;
   }
 
   .role__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
   }
 
   .role__card-body {
-    padding: var(--space-8);
+    padding: var(--space-6);
   }
 }
 
@@ -1575,14 +1623,6 @@
     gap: var(--space-10);
   }
 
-  .vietnam__editorial--reverse {
-    direction: rtl;
-  }
-
-  .vietnam__editorial--reverse > * {
-    direction: ltr;
-  }
-
   .vietnam__stats {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1601,9 +1641,49 @@
   }
 
   .vietnam__editorial {
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: var(--space-16);
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-12);
   }
+}
+
+/* Part B: Balanced Dual Museum Cards */
+.vietnam__grid-dual {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .vietnam__grid-dual {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+  }
+}
+
+.vietnam__card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.vietnam__strategic-banner {
+  margin-top: var(--space-12);
+  padding: var(--space-8) var(--space-10);
+  background: white;
+  border: 1px solid var(--border-light);
+  border-top: 3px solid var(--navy-deep);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.vietnam__strategic-banner p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* ============================================================
@@ -1636,7 +1716,7 @@
 .conclusion__content {
   position: relative;
   z-index: 1;
-  max-width: 700px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -1659,13 +1739,20 @@
   margin-bottom: var(--space-6);
 }
 
+.conclusion__editorial {
+  max-width: 860px;
+  margin: var(--space-8) auto;
+}
+
 .conclusion__body {
-  font-size: clamp(1rem, 1.5vw, 1.1875rem);
+  font-size: clamp(1.05rem, 1.3vw, 1.15rem);
   color: var(--text-on-dark);
-  line-height: 1.7;
-  opacity: 0.85;
-  margin: 0 auto var(--space-8);
-  max-width: var(--reading-width);
+  line-height: 1.85;
+  opacity: 0.92;
+  margin: 0 auto var(--space-6);
+  max-width: 860px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .conclusion__divider {
@@ -1678,14 +1765,17 @@
 
 .conclusion__quote {
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   font-style: italic;
   color: var(--museum-ivory);
-  line-height: 1.5;
-  margin: var(--space-8) auto;
-  max-width: 50ch;
+  line-height: 1.6;
+  margin: var(--space-10) auto 0;
+  max-width: 860px;
   border: none;
-  padding: 0;
+  border-top: 1px solid rgba(201, 185, 154, 0.3);
+  border-bottom: 1px solid rgba(201, 185, 154, 0.3);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
 }
 
 .conclusion__quote cite {
@@ -2011,4 +2101,37 @@
     width: 48px;
     height: 48px;
   }
+}
+
+/* ============================================================
+   13. EDITORIAL REFINEMENTS — Justified Paragraphs & Lining Figures
+   ============================================================ */
+
+/* Universal paragraph justification for museum editorial aesthetic */
+p,
+.lead,
+.overview p,
+.timeline__event-desc,
+.timeline__event-detail,
+.role p,
+.role__card-desc,
+.anatomy p,
+.anatomy__legend-desc,
+.vietnam p,
+.vietnam__card p,
+.conclusion__body,
+.references p,
+.references__card-desc {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Ensure numerals in titles and model codes render as full-height lining numbers */
+.hero__title,
+.nav__logo,
+.footer-title,
+.overview__card-id,
+h1, h2, h3, h4, h5, h6 {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
 }

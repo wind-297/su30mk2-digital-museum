@@ -110,12 +110,14 @@ const baseUrl = import.meta.env.BASE_URL;
   }
 
   .footer-title {
-    font-family: var(--font-heading);
+    font-family: var(--font-display, 'Cinzel', serif);
     font-size: 2rem;
     font-weight: 700;
     color: var(--metallic-champagne, #c9b99a);
     letter-spacing: 0.1em;
     margin: 0;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1;
   }
 
   .footer-project {

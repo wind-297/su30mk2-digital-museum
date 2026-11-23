@@ -82,20 +82,23 @@ const baseUrl = import.meta.env.BASE_URL;
     </div>
 
     <!-- Editorial Pullquote for Vietnam Significance -->
-    <div class="vietnam__pullquote" style="margin: var(--space-12) 0;" data-animate class="fade-in">
+    <div class="role__pullquote" data-animate class="fade-in">
       <blockquote>
         "{roleData.vietnamSignificance}"
       </blockquote>
+      <div class="role__pullquote-author">
+        Ý NGHĨA CHIẾN LƯỢC QUỐC PHÒNG · KHÔNG QUÂN NHÂN DÂN VIỆT NAM
+      </div>
     </div>
 
     <!-- Closing Insight & Caveat -->
     <div class="role__closing" data-animate class="slide-up">
-      <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1rem; max-width: var(--reading-width); margin: 0 auto var(--space-6); text-align: center;">
+      <p style="color: var(--text-secondary); line-height: 1.85; font-size: 1rem; max-width: 860px; margin: 0 auto var(--space-6); text-align: justify; text-justify: inter-word;">
         {roleData.closing}
       </p>
 
-      <aside class="callout callout-info" style="max-width: var(--reading-width); margin: 0 auto; background: white; border-color: var(--border-light); border-left: 3px solid var(--steel-blue); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm);">
-        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+      <aside class="callout callout-info" style="max-width: 860px; margin: 0 auto; background: white; border-color: var(--border-light); border-left: 3px solid var(--steel-blue); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin: 0; text-align: justify; text-justify: inter-word;">
           <strong style="color: var(--navy-deep);">Lưu ý cấu hình:</strong> {roleData.caveat}
         </p>
       </aside>

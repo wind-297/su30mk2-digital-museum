@@ -45,7 +45,7 @@ const fullOgImage = `${baseUrl}images/og-cover.jpg`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -59,7 +59,7 @@ const fullOgImage = `${baseUrl}images/og-cover.jpg`;
       </svg>
     </button>
 
-    <!-- Scroll animation observer -->
+    <!-- Scroll animation & Robust Nav Tracking observer -->
     <script>
       function initAnimations() {
         const animObserver = new IntersectionObserver((entries) => {
@@ -75,31 +75,108 @@ const fullOgImage = `${baseUrl}images/og-cover.jpg`;
         document.querySelectorAll('[data-animate]').forEach(el => animObserver.observe(el));
       }
 
-      // Active nav tracking
+      // Robust Active Nav Tracking (Scrollspy)
       function initActiveNavTracking() {
-        const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav__link, .nav-mobile__link, .nav-link');
+        const sectionIds = [
+          'overview',
+          'history',
+          'role',
+          'anatomy',
+          'technical',
+          'vietnam',
+          'conclusion',
+          'references'
+        ];
 
+        function getTrackedSections() {
+          return sectionIds
+            .map(id => document.getElementById(id))
+            .filter((el): el is HTMLElement => el !== null);
+        }
+
+        const sections = getTrackedSections();
         if (sections.length === 0 || navLinks.length === 0) return;
 
-        const navObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute('id');
-              navLinks.forEach(link => {
-                link.classList.remove('is-active', 'nav-link-active');
-                if (link.getAttribute('href') === `#${id}`) {
-                  link.classList.add('is-active');
-                }
-              });
+        function updateActiveSection() {
+          const scrollPos = window.scrollY;
+          const headerOffset = 130; // comfortable offset for fixed navbar
+          const windowHeight = window.innerHeight;
+          const docHeight = document.documentElement.scrollHeight;
+
+          // If near the top (in Hero section), clear active state
+          const firstSection = sections[0];
+          const firstRect = firstSection.getBoundingClientRect();
+          const firstTop = firstRect.top + scrollPos - headerOffset;
+          if (scrollPos < firstTop - 40) {
+            setActiveSection('');
+            return;
+          }
+
+          // If scrolled near bottom of page (within 100px), highlight last section (references)
+          if (scrollPos + windowHeight >= docHeight - 90) {
+            setActiveSection('references');
+            return;
+          }
+
+          let activeId = '';
+
+          for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            const rect = section.getBoundingClientRect();
+            const top = rect.top + scrollPos - headerOffset;
+            const bottom = top + rect.height;
+
+            if (scrollPos >= top && scrollPos < bottom) {
+              activeId = section.id;
+              break;
+            }
+          }
+
+          // Fallback if between sections
+          if (!activeId) {
+            for (let i = sections.length - 1; i >= 0; i--) {
+              const section = sections[i];
+              const rect = section.getBoundingClientRect();
+              const top = rect.top + scrollPos - headerOffset;
+              if (scrollPos >= top) {
+                activeId = section.id;
+                break;
+              }
+            }
+          }
+
+          if (activeId) {
+            setActiveSection(activeId);
+          }
+        }
+
+        function setActiveSection(id: string) {
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (id && href === `#${id}`) {
+              link.classList.add('is-active', 'nav-link-active');
+            } else {
+              link.classList.remove('is-active', 'nav-link-active');
             }
           });
-        }, {
-          threshold: 0.15,
-          rootMargin: '-80px 0px -40% 0px'
-        });
+        }
 
-        sections.forEach(section => navObserver.observe(section));
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              updateActiveSection();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+
+        window.addEventListener('resize', updateActiveSection, { passive: true });
+
+        // Initial check on load
+        updateActiveSection();
       }
 
       // Back-to-top logic

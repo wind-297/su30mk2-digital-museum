@@ -77,30 +77,31 @@ const baseUrl = import.meta.env.BASE_URL;
   <!-- Part B: Light Editorial Theme - Personnel, Training & National Guardianship -->
   <div class="vietnam__light section-light">
     <div class="container">
-      <div class="vietnam__editorial vietnam__editorial--reverse" data-animate class="slide-up">
-        <div class="vietnam__editorial-content">
+      <div class="vietnam__grid-dual" data-animate class="slide-up">
+        <!-- Column 1: Sovereignty & Strategic Missions -->
+        <article class="vietnam__card">
           <span class="overline" style="color: var(--steel-blue);">NHIỆM VỤ THIÊNG LIÊNG</span>
           <h3 class="h3" style="color: var(--navy-deep); margin-bottom: var(--space-4);">
             {vietnamData.sovereignty.title}
           </h3>
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4); font-size: 0.95rem;">
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4); font-size: 0.95rem; text-align: justify; text-justify: inter-word;">
             {vietnamData.sovereignty.content}
           </p>
-          <div style="background: white; border-left: 3px solid var(--steel-blue); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm); margin-bottom: var(--space-4); box-shadow: var(--shadow-sm);">
+          <div style="background: var(--ivory-soft); border-left: 3px solid var(--steel-blue); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm); margin-bottom: var(--space-4); border: 1px solid var(--border-light); border-left-width: 3px;">
             <p style="font-size: 0.875rem; color: var(--navy-deep); font-weight: 600; margin-bottom: var(--space-1);">
               Trung đoàn Không quân 935 — Sư đoàn 370 ("Hổ mang chúa")
             </p>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0; text-align: justify; text-justify: inter-word;">
               {vietnamData.sovereignty.regiment}
             </p>
           </div>
-          <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; font-style: italic;">
+          <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.65; font-style: italic; margin-top: auto; text-align: justify; text-justify: inter-word;">
             {vietnamData.sovereignty.broader}
           </p>
-        </div>
+        </article>
 
-        <!-- Pilot & Technicians In-depth Focus Card -->
-        <div class="vietnam__editorial-content" style="background: white; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-8); box-shadow: var(--shadow-sm);">
+        <!-- Column 2: Pilot & Technicians In-depth Focus Card -->
+        <article class="vietnam__card">
           <span class="overline" style="color: var(--metallic-champagne);">CON NGƯỜI LÀ TRỌNG TÂM</span>
           <h3 class="h3" style="color: var(--navy-deep); margin-bottom: var(--space-4);">
             {vietnamData.personnel.title}
@@ -110,7 +111,7 @@ const baseUrl = import.meta.env.BASE_URL;
             <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy-deep); margin-bottom: var(--space-1);">
               Bản lĩnh & Trình độ Phi công
             </h4>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; margin: 0; text-align: justify; text-justify: inter-word;">
               {vietnamData.personnel.pilotTraining}
             </p>
           </div>
@@ -119,31 +120,32 @@ const baseUrl = import.meta.env.BASE_URL;
             <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy-deep); margin-bottom: var(--space-1);">
               Cán bộ & Kỹ sư Bảo đảm Kỹ thuật
             </h4>
-            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; margin: 0; text-align: justify; text-justify: inter-word;">
               {vietnamData.personnel.technicians}
             </p>
           </div>
 
-          <div style="padding-top: var(--space-4); border-top: 1px solid var(--border-light);">
-            <p style="font-size: 0.85rem; color: var(--steel-blue); line-height: 1.6; margin-bottom: var(--space-2);">
+          <div style="padding-top: var(--space-4); border-top: 1px solid var(--border-light); margin-top: auto;">
+            <p style="font-size: 0.85rem; color: var(--steel-blue); line-height: 1.6; margin-bottom: var(--space-2); text-align: justify; text-justify: inter-word;">
               <strong>Kinh nghiệm Trung đoàn 927:</strong> {vietnamData.personnel.regiment927}
             </p>
-            <p style="font-size: 0.85rem; color: var(--steel-blue); line-height: 1.6; margin: 0;">
+            <p style="font-size: 0.85rem; color: var(--steel-blue); line-height: 1.6; margin: 0; text-align: justify; text-justify: inter-word;">
               <strong>Kiểm tra phân cấp 2024:</strong> {vietnamData.personnel.evaluation}
             </p>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Defense Legacy Conclusion Block -->
-      <div style="margin-top: var(--space-12); padding: var(--space-8); background: white; border: 1px solid var(--border-light); border-radius: var(--radius-md); text-align: center;" data-animate class="fade-in">
+      <div class="vietnam__strategic-banner" data-animate class="fade-in">
+        <span class="overline" style="color: var(--steel-blue); display: block; margin-bottom: var(--space-2);">TẦM NHÌN QUỐC PHÒNG</span>
         <h4 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--navy-deep); margin-bottom: var(--space-3);">
           {vietnamData.defense.title}
         </h4>
-        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; max-width: 65ch; margin: 0 auto var(--space-3);">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.85; max-width: 82ch; margin: 0 auto var(--space-3); text-align: justify; text-justify: inter-word;">
           {vietnamData.defense.content}
         </p>
-        <p style="font-size: 0.95rem; color: var(--text-primary); font-weight: 500; line-height: 1.8; max-width: 65ch; margin: 0 auto;">
+        <p style="font-size: 0.95rem; color: var(--navy-deep); font-weight: 500; line-height: 1.85; max-width: 82ch; margin: 0 auto; text-align: justify; text-justify: inter-word;">
           {vietnamData.defense.technology}
         </p>
       </div>
